@@ -12,7 +12,7 @@ s.bind((HOST, PORT))
 s.listen()
 print('Awaiting connection on IP: ',s.getsockname()[0],\
                           ' Port: ',s.getsockname()[1])
-connection, fromAddress = s.accept()     # Create connection socket
+connection, fromAddress = s.accept() # Wait and create connection object
 print('Connection from:', fromAddress)
 while DataCommingIn:
     receivedData = connection.recv(16)
@@ -21,3 +21,5 @@ while DataCommingIn:
         DataCommingIn = False
 connection.close()
 print('Connection closed')
+s.close()
+print('Socket closed')
