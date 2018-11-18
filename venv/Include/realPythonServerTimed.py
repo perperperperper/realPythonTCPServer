@@ -9,6 +9,7 @@ PORT = 65432        # Port to listen on should be > 1023
 
 def connect():
     s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+    s.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
     s.bind((HOST, PORT))
     s.listen()
     addresAndPort = s.getsockname() # Get tuple with IP and Port addresses
